@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mariel & Elizângela</title>
+
+  <!-- FONTES -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(180deg, #fff0f6, #ffd6e7);
+      color: #6b2c3e;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 420px;
+      margin: auto;
+      padding: 28px 22px;
+      position: relative;
+      z-index: 10;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.2rem;
+      margin-bottom: 8px;
+      color: #e64980;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      opacity: 0.8;
+      margin-bottom: 22px;
+    }
+
+    /* FOTO DO CASAL */
+    .photo-container {
+      margin: 20px 0;
+    }
+
+    .couple-photo {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 22px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      object-fit: cover;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.85);
+      border-radius: 22px;
+      padding: 18px;
+      margin-bottom: 22px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+
+    .card span {
+      display: block;
+      font-size: 1.05rem;
+      margin-top: 8px;
+    }
+
+    .text {
+      line-height: 1.65;
+      font-size: 0.95rem;
+    }
+
+    .music-btn {
+      display: block;
+      background: #e64980;
+      color: #fff;
+      padding: 16px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 1.05rem;
+      font-weight: 500;
+      box-shadow: 0 10px 25px rgba(230,73,128,0.35);
+      margin-bottom: 22px;
+    }
+
+    footer {
+      font-size: 0.75rem;
+      opacity: 0.7;
+      margin-top: 26px;
+    }
+
+    /* ANIMAÇÃO DOS CORAÇÕES E ONCINHAS */
+    .heart {
+      position: fixed;
+      bottom: -40px;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0;
+      animation-name: floatUp;
+      animation-timing-function: ease-out;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1) rotate(0deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh) scale(1.5) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Mariel & Elizângela</h1>
+    <div class="subtitle">De seu caso indefinido ❤️</div>
+
+    <!-- FOTO DO CASAL -->
+    <div class="photo-container">
+      <img src="https://i.imgur.com/ccTH2Vj.jpeg" alt="Mariel & Elizângela" class="couple-photo">
+    </div>
+
+    <!-- CONTADOR -->
+    <div class="card">
+      <strong>Estamos juntos há:</strong>
+      <span id="time"></span>
+    </div>
+
+    <!-- DECLARAÇÃO POÉTICA -->
+    <div class="card text">
+      💌 Minha Oncinha,
+      Eu só queria que você soubesse que te amo de um jeito que não dá pra explicar. Cada dia longe de você é uma saudade imensa, e eu fico aqui pensando no seu sorriso, no seu olhar, no jeito que me faz feliz só estando perto.
+      Sinto falta de tudo em você e de todos os momentos que passamos juntos. Meu coração só quer estar com você, agora e sempre ❤️.</div>
+      🤍Te amo demais, minha vida, minha oncinha. 🐆🤍
+    </div>
+
+    <!-- BOTÃO DE MÚSICA -->
+    <a href="https://youtu.be/TIvK6g6Doy8" target="_blank" class="music-btn">
+      ▶️ Nossa música
+    </a>
+
+    <footer>
+      Feito com amor 💕
+    </footer>
+  </div>
+
+  <script>
+    /* ===== CONTADOR DE TEMPO ===== */
+    const startDate = new Date('2025-10-05T01:32:00');
+
+    function updateCounter() {
+      const now = new Date();
+      let diff = now - startDate;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      diff -= days * (1000 * 60 * 60 * 24);
+
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      diff -= hours * (1000 * 60 * 60);
+
+      const minutes = Math.floor(diff / (1000 * 60));
+      diff -= minutes * (1000 * 60);
+
+      const seconds = Math.floor(diff / 1000);
+
+      document.getElementById('time').innerHTML =
+        `${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos`;
+    }
+
+    updateCounter();
+    setInterval(updateCounter, 1000);
+
+    /* ===== 💕 + 🐆 ANIMAÇÃO ===== */
+    function createFloatIcon() {
+      const icons = ['💕', '🐆'];
+      const icon = icons[Math.floor(Math.random() * icons.length)];
+
+      const el = document.createElement('div');
+      el.className = 'heart';
+      el.textContent = icon;
+      el.style.left = Math.random() * 90 + 'vw';
+      el.style.fontSize = (Math.random() * 12 + 18) + 'px';
+      el.style.animationDuration = (Math.random() * 4 + 6) + 's';
+      el.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+      document.body.appendChild(el);
+
+      el.addEventListener('animationend', () => el.remove());
+    }
+
+    setInterval(createFloatIcon, 500);
+  </script>
+</body>
+</html>
